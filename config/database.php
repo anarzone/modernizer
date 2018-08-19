@@ -1,11 +1,5 @@
 <?php
 
-$dbopts = parse_url(getenv('DATABASE_URL'));
-// $host = $dbopts["host"];
-// $user = $dbopts["user"];
-// $password =  $dbopts["pass"];
-// $dbname = ltrim($dbopts["path"],'/');
-
 return [
 
     /*
@@ -19,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql_pdoduction'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -47,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'db4free.net'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'modernizer'),
+            'username' => env('DB_USERNAME', 'modernizer'),
+            'password' => env('DB_PASSWORD', '5862616anar'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -67,18 +61,6 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
-            'schema' => 'public',
-            'sslmode' => 'prefer',
-        ],
-        'pgsql_pdoduction' => [
-            'driver' => 'pgsql',
-            'user' => $dbopts["user"] ?? null,
-            'password' => $dbopts["pass"] ?? null,
-            'host' => $dbopts["host"] ?? null,
-            'port' => $dbopts["port"],
-            'dbname' => ltrim($dbopts["path"],'/') ?? null,
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
