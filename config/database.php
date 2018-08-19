@@ -1,5 +1,11 @@
 <?php
 
+$dbopts = parse_url(getenv('DATABASE_URL'));
+// $host = $dbopts["host"];
+// $user = $dbopts["user"];
+// $password =  $dbopts["pass"];
+// $dbname = ltrim($dbopts["path"],'/');
+
 return [
 
     /*
@@ -13,7 +19,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql_pdoduction'),
 
     /*
     |--------------------------------------------------------------------------
@@ -61,6 +67,18 @@ return [
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+        'pgsql_pdoduction' => [
+            'driver' => 'pgsql',
+            'user' => $dbopts["user"] ?? null,
+            'password' => $dbopts["pass"] ?? null,
+            'host' => $dbopts["host"] ?? null,
+            'port' => $dbopts["port"],
+            'dbname' => ltrim($dbopts["path"],'/') ?? null,
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
